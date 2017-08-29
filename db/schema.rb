@@ -10,10 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829175234) do
+ActiveRecord::Schema.define(version: 20170829180700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "mentees", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "email"
+    t.string "f_name"
+    t.string "l_name"
+    t.string "gender"
+    t.string "address_1"
+    t.string "address_2"
+    t.string "city"
+    t.string "state_province"
+    t.string "zip_postal"
+    t.string "current_country"
+    t.string "counry_of_origin"
+    t.string "college_level"
+    t.string "college_name"
+    t.string "college_major"
+    t.string "about"
+    t.string "industry_interest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mentors", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "email"
+    t.string "f_name"
+    t.string "l_name"
+    t.string "gender"
+    t.string "address_1"
+    t.string "address_2"
+    t.string "city"
+    t.string "state_province"
+    t.string "zip_postal"
+    t.string "current_country"
+    t.string "counry_of_origin"
+    t.string "phone_no"
+    t.string "company"
+    t.string "job_title"
+    t.string "industry_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
@@ -42,7 +85,8 @@ ActiveRecord::Schema.define(version: 20170829175234) do
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
     t.string "type"
-    t.string "name"
+    t.string "f_name"
+    t.string "l_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
