@@ -17,3 +17,8 @@
 //= require jquery_ujs
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
+$(function() {
+var typed = new Typed('.mid', {
+   strings: ["Made In Africa.^1500 Made for the World."]
+ });
+});
