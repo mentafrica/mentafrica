@@ -1,0 +1,18 @@
+<% content_for(:navbar) do %>
+<ul id="nav-mobile" class="right hide-on-med-and-down">
+  <!-- <li><a href="#">Links Would Look Like This</a></li> -->
+  <% if current_user %>
+  Signed in as
+  <strong><%= current_user.email %></strong>!
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:'btn' %>
+  <%= link_to "Edit Profile", edit_user_registration_path, class:'btn' %>
+<% else %>
+  <br>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_github_omniauth_authorize_path %>';">Continue With Github</a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_google_oauth2_omniauth_authorize_path %>';">Continue With Google</a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_facebook_omniauth_authorize_path %>';">Continue With Facebook</a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= new_user_registration_path %>';">I Prefer Mail</a>
+  <% end %>
+</ul>
+<% end %>
+<img class="responsive-img" src="<%= asset_path 'cover.jpg'%>">
