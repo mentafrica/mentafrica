@@ -19,3 +19,16 @@
 nav{
   background-color: #009E9A;
 }
+
+.cover{
+  position: fixed;
+}
+
+.mid{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+}
