@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mentafrica</title>
+    <title>MentAfrica</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,18 +9,22 @@
   </head>
 
   <body>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <%= link_to 'MentAfrica', root_path, class:"brand-logo center"%>
+          <%= yield(:navbar)%>
+        </div>
+      </nav>
+    </div>
     <div>
-  <% if current_user %>
-    Signed in as <strong><%= current_user.email %></strong>!
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <%= link_to "Edit Profile", edit_user_registration_path %>
-  <% else %>
-    <%= link_to "Sign in with Google", "/users/auth/google_oauth2", id: "sign_in" %>
-    <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
-    <%= link_to "Sign in with Github", user_github_omniauth_authorize_path %>
-  <% end %>
-</div>
-<div>
-    <%= yield %>
+      <div class="red">
+        <%= flash[:alert]%>
+      </div>
+      <div class="green">
+        <%= flash[:notice]%>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>
