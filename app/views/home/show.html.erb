@@ -8,10 +8,10 @@
   <%= link_to "Edit Profile", edit_user_registration_path, class:'btn' %>
 <% else %>
   <br>
-  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_github_omniauth_authorize_path %>';">Continue With Github</a>
-  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_google_oauth2_omniauth_authorize_path %>';">Continue With Google</a>
-  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_facebook_omniauth_authorize_path %>';">Continue With Facebook</a>
-  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= new_user_registration_path %>';">I Prefer Mail</a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_github_omniauth_authorize_path %>';">Continue With Github<i class="icon ion-social-github"></i></a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_google_oauth2_omniauth_authorize_path %>';">Continue With Google<i class="icon ion-social-google"></i></a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_facebook_omniauth_authorize_path %>';">Continue With Facebook<i class="icon ion-social-facebook"></i></a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= new_user_registration_path %>';">Prefer Good old Mail?<i class="icon ion-email"></i></a>
   <% end %>
 </ul>
 <% end %>
