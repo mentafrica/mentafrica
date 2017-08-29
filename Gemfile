@@ -59,5 +59,7 @@ gem 'omniauth-github'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'activerecord-session_store'
+gem 'jquery-rails'
+gem 'materialize-sass'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
