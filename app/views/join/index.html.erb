@@ -1,0 +1,22 @@
+<% content_for(:navbar) do %>
+<ul id="nav-mobile" class="right hide-on-med-and-down">
+  <!-- <li><a href="#">Links Would Look Like This</a></li> -->
+  <% if current_user %>
+  Signed in as
+  <strong><%= current_user.email %></strong>!
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:'btn' %>
+  <%= link_to "Edit Profile", edit_user_registration_path, class:'btn' %>
+<% else %>
+  <br>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_github_omniauth_authorize_path %>';">Continue With Github<i class="icon ion-social-github"></i></a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_google_oauth2_omniauth_authorize_path %>';">Continue With Google<i class="icon ion-social-google"></i></a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_facebook_omniauth_authorize_path %>';">Continue With Facebook<i class="icon ion-social-facebook"></i></a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= new_user_registration_path %>';">Prefer Good old Mail?<i class="icon ion-email"></i></a>
+  <% end %>
+</ul>
+<% end %>
+<img class="responsive-img cover" src="<%= asset_path 'cover.jpg'%>">
+<div class="white-text decision">
+  <%= link_to 'Become A Mentor', join_mentor_path, class:'btn left'%>
+  <%= link_to 'Become A Mentee', join_mentee_path, class:'btn right'%>
+</div>
