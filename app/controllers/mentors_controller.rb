@@ -6,7 +6,7 @@ class MentorsController < ApplicationController
     parameters = details.merge(user_id).merge(email)
     @mentor = Mentor.new(parameters)
     if @mentor.save
-      current_user.update(complete:true)
+      current_user.update(complete:true, status:'mentor')
       if @mentor.counry_of_origin == 1
         @mentor.update(counry_of_origin:@mentor.current_country)
       end
