@@ -170,8 +170,12 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <%= f.text_field :industry_interest, class:'industry_interest', class:'validate', required:'required' %>
-          <%= f.label 'Industry Interest', for:'industry_interest', placeholder:'E.g Machine Learning, Financial Technology'%>
+          <%= select_tag('mentee[industry_interest]', options_for_select([['Choose your option', 1],['Accommodations','Accommodations'], ['Accounting','Accounting'], ['Advertising','Advertising'], ['Aerospace','Aerospace'], ['Agriculture & Agribusiness','Agriculture & Agribusiness'], ['Air Transportation','Air Transportation'],
+          ['Apparel & Accessories','Apparel & Accessories'], ['Auto Banking','Auto Banking'],
+          ['Beauty & Cosmetics','Beauty & Cosmetics'], ['Biotechnology','Biotechnology'],
+          ['Chemical','Chemical'],['Consumer Products','Consumer Products'],
+          ['Education','Education'], ['Electronics','Electronics']], disabled:1, selected:1), required:'required') %>
+          <%= f.label 'Industry Interest', for:'industry_interest'%>
         </div>
       </div>
       <%=f.submit 'Submit Form', class:'btn waves-effect waves-light', "data-disable-with"=> "Cooking Up Your Profile..."%>
