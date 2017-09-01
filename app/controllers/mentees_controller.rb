@@ -6,7 +6,7 @@ class MenteesController < ApplicationController
     parameters = details.merge(user_id).merge(email)
     @mentee = Mentee.new(parameters)
     if @mentee.save
-      current_user.update(complete:true)
+      current_user.update(complete:true, status:'mentee')
       if @mentee.counry_of_origin == 1
         @mentee.update(counry_of_origin:@mentee.current_country)
       end
