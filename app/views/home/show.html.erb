@@ -8,14 +8,15 @@
   <%= link_to "Edit Profile", edit_user_registration_path, class:'btn' %>
 <% else %>
   <br>
-  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_github_omniauth_authorize_path %>';">Continue With Github<i class="icon ion-social-github"></i></a>
-  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_google_oauth2_omniauth_authorize_path %>';">Continue With Google<i class="icon ion-social-google"></i></a>
-  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_facebook_omniauth_authorize_path %>';">Continue With Facebook<i class="icon ion-social-facebook"></i></a>
-  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= new_user_registration_path %>';">Prefer Good old Mail?<i class="icon ion-email"></i></a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_github_omniauth_authorize_path %>';" data-disable-with="Some Magic is happening...">Continue With Github<i class="icon ion-social-github"></i></a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_google_oauth2_omniauth_authorize_path %>';" data-disable-with="Some Magic is happening...">Continue With Google<i class="icon ion-social-google"></i></a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= user_facebook_omniauth_authorize_path %>';" data-disable-with="Some Magic is happening...">Continue With Facebook<i class="icon ion-social-facebook"></i></a>
+  <a class='btn' style="cursor: pointer" onclick="javascript: window.location = '<%= new_user_registration_path %>';" data-disable-with="Some Magic is happening...">Prefer Good old Mail?<i class="icon ion-email"></i></a>
   <% end %>
 </ul>
 <% end %>
 <img class="responsive-img cover" src="<%= asset_path 'cover.jpg'%>">
 <div class="white-text">
-  <h2 class="mid"></h2>
+  <h2 class="mid typed"></h2>
+  <%= link_to 'Join The Revolution', join_index_path, class:'btn btnm'%>
 </div>
