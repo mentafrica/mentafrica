@@ -15,11 +15,17 @@
  */
 @import "materialize";
 @import "materialize/extras/nouislider";
+@import "intlTelInput";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 nav{
   background-color: #009E9A;
 }
-
+.iti-flag{
+  background-image: image-url("flags.png");
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  .iti-flag {background-image: url("path/to/flags@2x.png");}
+}
 .cover{
   position: fixed;
 }
@@ -27,6 +33,14 @@ nav{
 .mid{
   height: 100%;
   width: 100%;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+}
+.btnm{
+  margin-top: 320px;
+  margin-left: 660px;
   display: flex;
   position: fixed;
   align-items: center;
