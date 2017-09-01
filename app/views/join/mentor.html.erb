@@ -1,0 +1,180 @@
+<% content_for(:navbar) do %>
+<ul id="nav-mobile" class="right hide-on-med-and-down">
+  <!-- <li><a href="#">Links Would Look Like This</a></li> -->
+  <% if current_user %>
+  Signed in as
+  <strong><%= current_user.email %></strong>!
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:'btn' %>
+  <%= link_to "Edit Profile", edit_user_registration_path, class:'btn' %>
+  <% end %>
+</ul>
+<% end %>
+<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="input-field col s12">
+        <h4>Mentor Application</h4>
+        <p>
+          <i>Minimum Requirements:</i>
+        </p>
+        <ul class="browser-default">
+          <li>Work/Have experience in Any Field Really.</li>
+          <li>Most meetings will be held over Skype/FaceTime/Hangouts/Mentafica (On Agreement of mentor and mentee. MentAfrica has an in-app communication model).</li>
+          <li>Be ready to serve as a role model and assist mentees achieve their career goals.</li>
+          <li>Be willing to avail yourself to your mentee, especially during the school year (August - May, i.e 10 meetings in a year).</li>
+          <li><b>Note: This program begins as soon as the system finds a suitable mentee for you.</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="container">
+      <%= form_for @mentor, :url => {:controller => "mentors", :action => "create"}, :html => {:class => "col s12"} do |f| %>
+      <div class="row">
+        <div class="input-field col s6">
+          <%= f.text_field :f_name, class:'first_name', class:'validate', required:'required' %>
+          <%= f.label 'First Name', for:'first_name'%>
+        </div>
+        <div class="input-field col s6">
+          <%= f.text_field :l_name, class:'last_name', class:'validate', required:'required' %>
+          <%= f.label 'Last Name', for:'last_name'%>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= select_tag('mentor[gender]', options_for_select([['Choose your option', 1], ['Rather Not Say', 'Rather Not Say'], ['Female', 'Female'], ['Male', 'Male']], disabled:1, selected:1), required:'required') %>
+          <%= f.label 'Gender', for:'gender'%>
+        </div>
+      </div>
+      <%= f.label 'Address'%>
+      <div class="row">
+        <div class="input-field col s6">
+          <%= f.text_field :address_1, class:'address_1', class:'validate', required:'required' %>
+          <%= f.label 'Address 1', for:'address_1'%>
+        </div>
+        <div class="input-field col s6">
+          <%= f.text_field :address_2, class:'address_2', class:'validate' %>
+          <%= f.label 'Address 2', for:'address_2'%>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :city, class:'city', class:'validate', required:'required' %>
+          <%= f.label 'City', for:'city'%>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s8">
+          <%= f.text_field :state_province, class:'state_province', class:'validate', required:'required' %>
+          <%= f.label 'State/Province', for:'state_province'%>
+        </div>
+        <div class="input-field col s4">
+          <%= f.number_field :zip_postal, class:'zip_postal', class:'validate' %>
+          <%= f.label 'Zip Code', for:'zip_postal'%>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <%= select_tag('mentor[current_country]', options_for_select([['Select Yours', 1],["Kenya","KE"],["UnitedStates","US"],["Afghanistan","AF"],["Albania","AL"],["Algeria","DZ"],
+          ["AmericanSamoa","AS"],["Andorra","AD"],["Angola","AO"],["Anguilla","AI"],["Antarctica","AQ"],["AntiguaAndBarbuda","AG"],["Argentina","AR"],
+          ["Armenia","AM"],["Aruba","AW"],["Australia","AU"],["Austria","AT"],["Azerbaijan","AZ"],["Bahamas","BS"],["Bahrain","BH"],["Bangladesh","BD"],
+          ["Barbados","BB"],["Belarus","BY"],["Belgium","BE"],["Belize","BZ"],["Benin","BJ"],["Bermuda","BM"],["Bhutan","BT"],["Bolivia","BO"],
+          ["BosniaAndHerzegovina","BA"],["Botswana","BW"],["BouvetIsland","BV"],["Brazil","BR"],["BritishIndianOceanTerritory","IO"],["Brunei","BN"],
+          ["Bulgaria","BG"],["BurkinaFaso","BF"],["Burundi","BI"],["Cambodia","KH"],["Cameroon","CM"],["Canada","CA"],["CapeVerde","CV"],["CaymanIslands","KY"],
+          ["CentralAfricanRepublic","CF"],["Chad","TD"],["Chile","CL"],["China","CN"],["ChristmasIsland","CX"],["Cocos(Keeling)Islands","CC"],["Columbia","CO"],
+          ["Comoros","KM"],["Congo","CG"],["CookIslands","CK"],["CostaRica","CR"],["CoteD'Ivorie(IvoryCoast)","CI"],["Croatia(Hrvatska)","HR"],["Cuba","CU"],
+          ["Cyprus","CY"],["CzechRepublic","CZ"],["DemocraticRepublicOfCongo(Zaire)","CD"],["Denmark","DK"],["Djibouti","DJ"],["Dominica","DM"],["DominicanRepublic","DO"],
+          ["EastTimor","TP"],["Ecuador","EC"],["Egypt","EG"],["ElSalvador","SV"],["EquatorialGuinea","GQ"],["Eritrea","ER"],["Estonia","EE"],["Ethiopia","ET"],
+          ["FalklandIslands(Malvinas)","FK"],["FaroeIslands","FO"],["Fiji","FJ"],["Finland","FI"],["France","FR"],["France,Metropolitan","FX"],["FrenchGuinea","GF"],
+          ["FrenchPolynesia","PF"],["FrenchSouthernTerritories","TF"],["Gabon","GA"],["Gambia","GM"],["Georgia","GE"],["Germany","DE"],["Ghana","GH"],["Gibraltar","GI"],
+          ["Greece","GR"],["Greenland","GL"],["Grenada","GD"],["Guadeloupe","GP"],["Guam","GU"],["Guatemala","GT"],["Guinea","GN"],["Guinea-Bissau","GW"],["Guyana","GY"],
+          ["Haiti","HT"],["HeardAndMcDonaldIslands","HM"],["Honduras","HN"],["HongKong","HK"],["Hungary","HU"],["Iceland","IS"],["India","IN"],["Indonesia","ID"],["Iran","IR"],
+          ["Iraq","IQ"],["Ireland","IE"],["Israel","IL"],["Italy","IT"],["Jamaica","JM"],["Japan","JP"],["Jordan","JO"],["Kazakhstan","KZ"],["Kiribati","KI"],
+          ["Kuwait","KW"],["Kyrgyzstan","KG"],["Laos","LA"],["Latvia","LV"],["Lebanon","LB"],["Lesotho","LS"],["Liberia","LR"],["Libya","LY"],["Liechtenstein","LI"],
+          ["Lithuania","LT"],["Luxembourg","LU"],["Macau","MO"],["Macedonia","MK"],["Madagascar","MG"],["Malawi","MW"],["Malaysia","MY"],["Maldives","MV"],["Mali","ML"],["Malta","MT"],
+          ["MarshallIslands","MH"],["Martinique","MQ"],["Mauritania","MR"],["Mauritius","MU"],["Mayotte","YT"],["Mexico","MX"],["Micronesia","FM"],["Moldova","MD"],["Monaco","MC"],
+          ["Mongolia","MN"],["Montserrat","MS"],["Morocco","MA"],["Mozambique","MZ"],["Myanmar(Burma)","MM"],["Namibia","NA"],["Nauru","NR"],["Nepal","NP"],["Netherlands","NL"],
+          ["NetherlandsAntilles","AN"],["NewCaledonia","NC"],["NewZealand","NZ"],["Nicaragua","NI"],["Niger","NE"],["Nigeria","NG"],["Niue","NU"],["NorfolkIsland","NF"],["NorthKorea","KP"],
+          ["NorthernMarianaIslands","MP"],["Norway","NO"],["Oman","OM"],["Pakistan","PK"],["Palau","PW"],["Panama","PA"],["PapuaNewGuinea","PG"],["Paraguay","PY"],["Peru","PE"],
+          ["Philippines","PH"],["Pitcairn","PN"],["Poland","PL"],["Portugal","PT"],["PuertoRico","PR"],["Qatar","QA"],["Reunion","RE"],["Romania","RO"],["Russia","RU"],["Rwanda","RW"],
+          ["SaintHelena","SH"],["SaintKittsAndNevis","KN"],["SaintLucia","LC"],["SaintPierreAndMiquelon","PM"],["SaintVincentAndTheGrenadines","VC"],["SanMarino","SM"],["SaoTomeAndPrincipe","ST"],
+          ["SaudiArabia","SA"],["Senegal","SN"],["Seychelles","SC"],["SierraLeone","SL"],["Singapore","SG"],["SlovakRepublic","SK"],["Slovenia","SI"],["SolomonIslands","SB"],["Somalia","SO"],
+          ["SouthAfrica","ZA"],["SouthGeorgiaAndSouthSandwichIslands","GS"],["SouthKorea","KR"],["Spain","ES"],["SriLanka","LK"],["Sudan","SD"],["Suriname","SR"],["SvalbardAndJanMayen","SJ"],
+          ["Swaziland","SZ"],["Sweden","SE"],["Switzerland","CH"],["Syria","SY"],["Taiwan","TW"],["Tajikistan","TJ"],["Tanzania","TZ"],["Thailand","TH"],["Togo","TG"],["Tokelau","TK"],
+          ["Tonga","TO"],["TrinidadAndTobago","TT"],["Tunisia","TN"],["Turkey","TR"],["Turkmenistan","TM"],["TurksAndCaicosIslands","TC"],["Tuvalu","TV"],["Uganda","UG"],["Ukraine","UA"],
+          ["UnitedArabEmirates","AE"],["UnitedKingdom","UK"],["UnitedStatesMinorOutlyingIslands","UM"],["Uruguay","UY"],["Uzbekistan","UZ"],["Vanuatu","VU"],["VaticanCity(HolySee)","VA"],
+          ["Venezuela","VE"],["Vietnam","VN"],["VirginIslands(British)","VG"],["VirginIslands(US)","VI"],["WallisAndFutunaIslands","WF"],["WesternSahara","EH"],["WesternSamoa","WS"], ["Yemen","YE"],["Yugoslavia","YU"],["Zambia","ZM"],["Zimbabwe","ZW"]],
+          disabled:1, selected:1), required:'required') %>
+          <%= f.label 'Current Country', for:'current_country'%>
+        </div>
+        <div class="input-field col s6">
+          <%= select_tag('mentor[counry_of_origin]', options_for_select([['Same As Current', 1],["Kenya","KE"],["UnitedStates","US"],["Afghanistan","AF"],["Albania","AL"],["Algeria","DZ"],
+          ["AmericanSamoa","AS"],["Andorra","AD"],["Angola","AO"],["Anguilla","AI"],["Antarctica","AQ"],["AntiguaAndBarbuda","AG"],["Argentina","AR"],
+          ["Armenia","AM"],["Aruba","AW"],["Australia","AU"],["Austria","AT"],["Azerbaijan","AZ"],["Bahamas","BS"],["Bahrain","BH"],["Bangladesh","BD"],
+          ["Barbados","BB"],["Belarus","BY"],["Belgium","BE"],["Belize","BZ"],["Benin","BJ"],["Bermuda","BM"],["Bhutan","BT"],["Bolivia","BO"],
+          ["BosniaAndHerzegovina","BA"],["Botswana","BW"],["BouvetIsland","BV"],["Brazil","BR"],["BritishIndianOceanTerritory","IO"],["Brunei","BN"],
+          ["Bulgaria","BG"],["BurkinaFaso","BF"],["Burundi","BI"],["Cambodia","KH"],["Cameroon","CM"],["Canada","CA"],["CapeVerde","CV"],["CaymanIslands","KY"],
+          ["CentralAfricanRepublic","CF"],["Chad","TD"],["Chile","CL"],["China","CN"],["ChristmasIsland","CX"],["Cocos(Keeling)Islands","CC"],["Columbia","CO"],
+          ["Comoros","KM"],["Congo","CG"],["CookIslands","CK"],["CostaRica","CR"],["CoteD'Ivorie(IvoryCoast)","CI"],["Croatia(Hrvatska)","HR"],["Cuba","CU"],
+          ["Cyprus","CY"],["CzechRepublic","CZ"],["DemocraticRepublicOfCongo(Zaire)","CD"],["Denmark","DK"],["Djibouti","DJ"],["Dominica","DM"],["DominicanRepublic","DO"],
+          ["EastTimor","TP"],["Ecuador","EC"],["Egypt","EG"],["ElSalvador","SV"],["EquatorialGuinea","GQ"],["Eritrea","ER"],["Estonia","EE"],["Ethiopia","ET"],
+          ["FalklandIslands(Malvinas)","FK"],["FaroeIslands","FO"],["Fiji","FJ"],["Finland","FI"],["France","FR"],["France,Metropolitan","FX"],["FrenchGuinea","GF"],
+          ["FrenchPolynesia","PF"],["FrenchSouthernTerritories","TF"],["Gabon","GA"],["Gambia","GM"],["Georgia","GE"],["Germany","DE"],["Ghana","GH"],["Gibraltar","GI"],
+          ["Greece","GR"],["Greenland","GL"],["Grenada","GD"],["Guadeloupe","GP"],["Guam","GU"],["Guatemala","GT"],["Guinea","GN"],["Guinea-Bissau","GW"],["Guyana","GY"],
+          ["Haiti","HT"],["HeardAndMcDonaldIslands","HM"],["Honduras","HN"],["HongKong","HK"],["Hungary","HU"],["Iceland","IS"],["India","IN"],["Indonesia","ID"],["Iran","IR"],
+          ["Iraq","IQ"],["Ireland","IE"],["Israel","IL"],["Italy","IT"],["Jamaica","JM"],["Japan","JP"],["Jordan","JO"],["Kazakhstan","KZ"],["Kiribati","KI"],
+          ["Kuwait","KW"],["Kyrgyzstan","KG"],["Laos","LA"],["Latvia","LV"],["Lebanon","LB"],["Lesotho","LS"],["Liberia","LR"],["Libya","LY"],["Liechtenstein","LI"],
+          ["Lithuania","LT"],["Luxembourg","LU"],["Macau","MO"],["Macedonia","MK"],["Madagascar","MG"],["Malawi","MW"],["Malaysia","MY"],["Maldives","MV"],["Mali","ML"],["Malta","MT"],
+          ["MarshallIslands","MH"],["Martinique","MQ"],["Mauritania","MR"],["Mauritius","MU"],["Mayotte","YT"],["Mexico","MX"],["Micronesia","FM"],["Moldova","MD"],["Monaco","MC"],
+          ["Mongolia","MN"],["Montserrat","MS"],["Morocco","MA"],["Mozambique","MZ"],["Myanmar(Burma)","MM"],["Namibia","NA"],["Nauru","NR"],["Nepal","NP"],["Netherlands","NL"],
+          ["NetherlandsAntilles","AN"],["NewCaledonia","NC"],["NewZealand","NZ"],["Nicaragua","NI"],["Niger","NE"],["Nigeria","NG"],["Niue","NU"],["NorfolkIsland","NF"],["NorthKorea","KP"],
+          ["NorthernMarianaIslands","MP"],["Norway","NO"],["Oman","OM"],["Pakistan","PK"],["Palau","PW"],["Panama","PA"],["PapuaNewGuinea","PG"],["Paraguay","PY"],["Peru","PE"],
+          ["Philippines","PH"],["Pitcairn","PN"],["Poland","PL"],["Portugal","PT"],["PuertoRico","PR"],["Qatar","QA"],["Reunion","RE"],["Romania","RO"],["Russia","RU"],["Rwanda","RW"],
+          ["SaintHelena","SH"],["SaintKittsAndNevis","KN"],["SaintLucia","LC"],["SaintPierreAndMiquelon","PM"],["SaintVincentAndTheGrenadines","VC"],["SanMarino","SM"],["SaoTomeAndPrincipe","ST"],
+          ["SaudiArabia","SA"],["Senegal","SN"],["Seychelles","SC"],["SierraLeone","SL"],["Singapore","SG"],["SlovakRepublic","SK"],["Slovenia","SI"],["SolomonIslands","SB"],["Somalia","SO"],
+          ["SouthAfrica","ZA"],["SouthGeorgiaAndSouthSandwichIslands","GS"],["SouthKorea","KR"],["Spain","ES"],["SriLanka","LK"],["Sudan","SD"],["Suriname","SR"],["SvalbardAndJanMayen","SJ"],
+          ["Swaziland","SZ"],["Sweden","SE"],["Switzerland","CH"],["Syria","SY"],["Taiwan","TW"],["Tajikistan","TJ"],["Tanzania","TZ"],["Thailand","TH"],["Togo","TG"],["Tokelau","TK"],
+          ["Tonga","TO"],["TrinidadAndTobago","TT"],["Tunisia","TN"],["Turkey","TR"],["Turkmenistan","TM"],["TurksAndCaicosIslands","TC"],["Tuvalu","TV"],["Uganda","UG"],["Ukraine","UA"],
+          ["UnitedArabEmirates","AE"],["UnitedKingdom","UK"],["UnitedStatesMinorOutlyingIslands","UM"],["Uruguay","UY"],["Uzbekistan","UZ"],["Vanuatu","VU"],["VaticanCity(HolySee)","VA"],
+          ["Venezuela","VE"],["Vietnam","VN"],["VirginIslands(British)","VG"],["VirginIslands(US)","VI"],["WallisAndFutunaIslands","WF"],["WesternSahara","EH"],["WesternSamoa","WS"], ["Yemen","YE"],["Yugoslavia","YU"],["Zambia","ZM"],["Zimbabwe","ZW"]],
+          selected:1), required:'required') %>
+          <%= f.label 'Country of Origin', for:'counry_of_origin'%>
+        </div>
+      </div>
+
+      <div class="row">
+        <%= f.label 'Phone No', for:'mentor_phone_no'%>
+        <div class="input-field col s12">
+          <%= f.telephone_field :phone_no, class:'phone_no', class:'validate' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :company, class:'company', class:'validate', required:'required' %>
+          <%= f.label 'Company/Institution Name', for:'company'%>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :job_title, class:'job_title', class:'validate', required:'required' %>
+          <%= f.label 'Job Title', for:'job_title'%>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= select_tag('mentor[industry_type]', options_for_select([['Choose your option', 1],['Accommodations','Accommodations'], ['Accounting','Accounting'], ['Advertising','Advertising'], ['Aerospace','Aerospace'], ['Agriculture & Agribusiness','Agriculture & Agribusiness'], ['Air Transportation','Air Transportation'],
+          ['Apparel & Accessories','Apparel & Accessories'], ['Auto Banking','Auto Banking'],
+          ['Beauty & Cosmetics','Beauty & Cosmetics'], ['Biotechnology','Biotechnology'],
+          ['Chemical','Chemical'],['Consumer Products','Consumer Products'],
+          ['Education','Education'], ['Electronics','Electronics']], disabled:1, selected:1), required:'required') %>
+          <%= f.label 'Industry Type', for:'industry_type'%>
+        </div>
+      </div>
+      <%=f.submit 'Submit Form', class:'btn waves-effect waves-light', "data-disable-with"=> "Cooking Your Profile..."%>
+      <% end %>
+    </div>
+  </div>
+</div>
