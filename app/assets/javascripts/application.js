@@ -17,8 +17,38 @@
 //= require jquery_ujs
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
+//= require intlTelInput
+//= require libphonenumber/utils
 $(function() {
-var typed = new Typed('.mid', {
-   strings: ["Made In Africa.^1500 Made for the World."]
- });
+  var typed = new Typed('.typed', {
+    strings: ["Made In Africa.^1500 Made for the World."]
+  });
 });
+document.addEventListener("turbolinks:load", function() {
+  $('select').material_select();
+  $("#mentor_phone_no").intlTelInput({
+    formatOnInit: true,
+    separateDialCode: true,
+    initialCountry: "auto",
+    geoIpLookup: function(callback) {
+      $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+        var countryCode = (resp && resp.country) ? resp.country : "";
+        callback(countryCode);
+      });
+    }
+  });
+  $("#mentee_phone_no").intlTelInput({
+    formatOnInit: true,
+    separateDialCode: true,
+    initialCountry: "auto",
+    geoIpLookup: function(callback) {
+      $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+        var countryCode = (resp && resp.country) ? resp.country : "";
+        callback(countryCode);
+      });
+    }
+  });
+  $("form").submit(function() {
+    myInput.val(myInput.intlTelInput("getNumber"));
+  });
+})
