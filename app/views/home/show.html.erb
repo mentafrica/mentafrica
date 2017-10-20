@@ -20,9 +20,11 @@
 </ul>
 <% end %>
 <img class="responsive-img cover" src="<%= asset_path 'cover.jpg'%>">
-<% if user_signed_in? %>
 <div class="white-text">
   <h2 class="mid typed"></h2>
+  <% if user_signed_in? && current_user.complete %>
+  <%= link_to 'Go To App', app_index_path, class:'btn btnm'%>
+  <% elsif user_signed_in? %>
   <%= link_to 'Join The Revolution', join_index_path, class:'btn btnm'%>
+  <% end %>
 </div>
-<% end %>

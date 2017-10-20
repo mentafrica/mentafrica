@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   resources :join, only: [:index]
   resource :home, only: [:show]
   resources :mentors
